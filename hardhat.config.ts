@@ -3,10 +3,19 @@ import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-etherscan'
 
+require('dotenv').config()
+
+const privateKey: string | undefined = process.env.PRIVATE_KEY;
+console.log(privateKey)
+
 export default {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: false,
+    },
+    bkc_testnet: {
+      url: `https://rpc-testnet.bitkubchain.io`,
+      accounts: [privateKey]
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
